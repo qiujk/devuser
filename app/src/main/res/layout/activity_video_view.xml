@@ -3,26 +3,26 @@
               xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
-              android:orientation="vertical"
-              android:gravity="center"
               android:background="@drawable/shape_main"
+              android:gravity="center"
+              android:orientation="vertical"
               tools:context="com.qiujk.devuser.VideoViewActivity">
 
     <EditText
         android:id="@+id/url"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="url" />
+        android:hint="url"/>
 
     <Button
         android:id="@+id/play"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Play" />
+        android:text="Play"/>
 
     <VideoView
         android:id="@+id/video"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"/>
 </LinearLayout>

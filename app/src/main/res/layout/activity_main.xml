@@ -4,47 +4,54 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/shape_main"
-                tools:context=".MainActivity" >
+                tools:context=".MainActivity">
 
-    <LinearLayout android:layout_height="wrap_content"
-                  android:layout_marginTop="50dp"
-                  android:layout_width="match_parent"
-                  android:orientation="vertical">
-            <ImageView android:layout_height="wrap_content"
-                   android:layout_width="wrap_content"
-                   android:layout_gravity="center"
-                   android:src="@drawable/main"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/main"/>
     </LinearLayout>
-    <LinearLayout android:layout_height="wrap_content"
-                  android:layout_marginTop="100dp"
-                  android:layout_width="match_parent"
-                  android:layout_alignParentBottom="true"
-                  android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/btnAlbum"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="50dp"
             android:background="@drawable/shape_main"
-            android:layout_width="match_parent"
-            android:textColor="#FFFFFF"
-            android:text="使用本机"/>
+            android:text="使用本机"
+            android:textColor="#FFFFFF"/>
+
         <Button
             android:id="@+id/btnMediaPlayer"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="50dp"
             android:background="@drawable/shape_main"
-            android:layout_width="match_parent"
-            android:textColor="#FFFFFF"
-            android:text="使用MEDIA"/>
+            android:text="使用MEDIA"
+            android:textColor="#FFFFFF"/>
+
         <Button
             android:id="@+id/btnVideoPlayer"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="50dp"
             android:background="@drawable/shape_main"
-            android:layout_width="match_parent"
-            android:textColor="#FFFFFF"
-            android:text="使用VIDEOVIEW"/>
+            android:text="使用VIDEOVIEW"
+            android:textColor="#FFFFFF"/>
 
     </LinearLayout>
 

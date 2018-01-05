@@ -29,6 +29,7 @@ public class VideoActivity extends AppCompatActivity {
     private boolean mIsVideoReadyToBePlayed = true;
     private int mVideoWidth = 0;
     private int mVideoHeight = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +61,7 @@ public class VideoActivity extends AppCompatActivity {
                         mediaPlayer.seekTo(position);
                         position = 0;
                     } catch (Exception e) {
+                        Log.e(TAG,"surfaceView error:"+e.getMessage());
                     }
                 }
             }
@@ -70,7 +72,7 @@ public class VideoActivity extends AppCompatActivity {
         });
         //endregion
         //region 视频宽高总是等于定义的SurfaceView布局宽高，所以视频可能会被拉伸变形                                   }
-        mediaPlayer.setOnVideoSizeChangedListener(new OnVideoSizeChangedListener(){
+        mediaPlayer.setOnVideoSizeChangedListener(new OnVideoSizeChangedListener() {
             @Override
             public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
                 if (width == 0 || height == 0) {
@@ -86,7 +88,7 @@ public class VideoActivity extends AppCompatActivity {
             }
         });
 
-        mediaPlayer.setOnPreparedListener(new OnPreparedListener(){
+        mediaPlayer.setOnPreparedListener(new OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
                 mIsVideoReadyToBePlayed = true;
@@ -97,73 +99,75 @@ public class VideoActivity extends AppCompatActivity {
         });
         //endregion
         mediaPlayer.setOnPreparedListener(new OnPreparedListener() {
-                 @Override
-                 public void onPrepared(MediaPlayer mp) {
-                     mp.start();
-                     Toast.makeText(VideoActivity.this, "开始播放！", Toast.LENGTH_LONG).show();
-                  }
-             });
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.start();
+                Toast.makeText(VideoActivity.this, "开始播放！", Toast.LENGTH_LONG).show();
+            }
+        });
         mediaPlayer.setOnErrorListener(new android.media.MediaPlayer.OnErrorListener() {
-                @Override
-                public boolean onError(MediaPlayer mp, int what, int extra) {
-                        Log.d(TAG, "OnError - Error code: " + what + " Extra code: " + extra);
-                        switch (what) {
-                                case -1004:
-                                        Log.d(TAG, "MEDIA_ERROR_IO");
-                                        break;
-                                case -1007:
-                                         Log.d(TAG, "MEDIA_ERROR_MALFORMED");
-                                         break;
-                                 case 200:
-                                         Log.d(TAG, "MEDIA_ERROR_NOT_VALID_FOR_PROGRESSIVE_PLAYBACK");
-                                         break;
-                                 case 100:
-                                         Log.d(TAG, "MEDIA_ERROR_SERVER_DIED");
-                                         break;
-                                 case -110:
-                                         Log.d(TAG, "MEDIA_ERROR_TIMED_OUT");
-                                         break;
-                                 case 1:
-                                         Log.d(TAG, "MEDIA_ERROR_UNKNOWN");
-                                         break;
-                                 case -1010:
-                                         Log.d(TAG, "MEDIA_ERROR_UNSUPPORTED");
-                                         break;
-                                 }
-                       switch (extra) {
-                                 case 800:
-                                         Log.d(TAG, "MEDIA_INFO_BAD_INTERLEAVING");
-                                         break;
-                                 case 702:
-                                         Log.d(TAG, "MEDIA_INFO_BUFFERING_END");
-                                         break;
-                                 case 701:
-                                         Log.d(TAG, "MEDIA_INFO_METADATA_UPDATE");
-                                        break;
-                                case 802:
-                                        Log.d(TAG, "MEDIA_INFO_METADATA_UPDATE");
-                                        break;
-                                case 801:
-                                        Log.d(TAG, "MEDIA_INFO_NOT_SEEKABLE");
-                                        break;
-                                case 1:
-                                        Log.d(TAG, "MEDIA_INFO_UNKNOWN");
-                                        break;
-                                case 3:
-                                        Log.d(TAG, "MEDIA_INFO_VIDEO_RENDERING_START");
-                                        break;
-                                case 700:
-                                        Log.d(TAG, "MEDIA_INFO_VIDEO_TRACK_LAGGING");
-                                        break;
-                                }
-                       return false;
-                   }
-          });
+            @Override
+            public boolean onError(MediaPlayer mp, int what, int extra) {
+                Log.d(TAG, "OnError - Error code: " + what + " Extra code: " + extra);
+                switch (what) {
+                    case -1004:
+                        Log.d(TAG, "MEDIA_ERROR_IO");
+                        break;
+                    case -1007:
+                        Log.d(TAG, "MEDIA_ERROR_MALFORMED");
+                        break;
+                    case 200:
+                        Log.d(TAG, "MEDIA_ERROR_NOT_VALID_FOR_PROGRESSIVE_PLAYBACK");
+                        break;
+                    case 100:
+                        Log.d(TAG, "MEDIA_ERROR_SERVER_DIED");
+                        break;
+                    case -110:
+                        Log.d(TAG, "MEDIA_ERROR_TIMED_OUT");
+                        break;
+                    case 1:
+                        Log.d(TAG, "MEDIA_ERROR_UNKNOWN");
+                        break;
+                    case -1010:
+                        Log.d(TAG, "MEDIA_ERROR_UNSUPPORTED");
+                        break;
+                }
+                switch (extra) {
+                    case 800:
+                        Log.d(TAG, "MEDIA_INFO_BAD_INTERLEAVING");
+                        break;
+                    case 702:
+                        Log.d(TAG, "MEDIA_INFO_BUFFERING_END");
+                        break;
+                    case 701:
+                        Log.d(TAG, "MEDIA_INFO_METADATA_UPDATE");
+                        break;
+                    case 802:
+                        Log.d(TAG, "MEDIA_INFO_METADATA_UPDATE");
+                        break;
+                    case 801:
+                        Log.d(TAG, "MEDIA_INFO_NOT_SEEKABLE");
+                        break;
+                    case 1:
+                        Log.d(TAG, "MEDIA_INFO_UNKNOWN");
+                        break;
+                    case 3:
+                        Log.d(TAG, "MEDIA_INFO_VIDEO_RENDERING_START");
+                        break;
+                    case 700:
+                        Log.d(TAG, "MEDIA_INFO_VIDEO_TRACK_LAGGING");
+                        break;
+                }
+                return false;
+            }
+        });
     }
+
     private void startVideoPlayback() {
         surfaceView.getHolder().setFixedSize(mVideoWidth, mVideoHeight);
         //mediaPlayer.start();
     }
+
     class ButtonOnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
@@ -171,7 +175,6 @@ public class VideoActivity extends AppCompatActivity {
                 case R.id.btnplay:
                     play();
                     break;
-
                 case R.id.btnpause:
                     if (mediaPlayer.isPlaying()) {
                         mediaPlayer.pause();
@@ -183,7 +186,6 @@ public class VideoActivity extends AppCompatActivity {
                         btnpause.setBackgroundResource(resID);
                     }
                     break;
-
                 case R.id.btnstop:
                     if (mediaPlayer.isPlaying()) {
                         mediaPlayer.stop();
@@ -207,6 +209,7 @@ public class VideoActivity extends AppCompatActivity {
         }
         super.onPause();
     }
+
     private void play() {
         try {
             mediaPlayer.reset();
@@ -214,14 +217,14 @@ public class VideoActivity extends AppCompatActivity {
 
             // 设置需要播放的视频
             Uri uri = Uri.parse(url1);
-            mediaPlayer.setDataSource(getApplicationContext(),uri);
+            mediaPlayer.setDataSource(getApplicationContext(), uri);
             // 把视频画面输出到SurfaceView
             mediaPlayer.setDisplay(surfaceView.getHolder());
             mediaPlayer.prepare();
             // 播放
             //mediaPlayer.start();
         } catch (Exception e) {
-            Log.e(TAG,"play error:"+e.getMessage());
+            Log.e(TAG, "play error:" + e.getMessage());
         }
     }
 }

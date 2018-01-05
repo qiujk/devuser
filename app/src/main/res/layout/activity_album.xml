@@ -9,10 +9,10 @@
     android:orientation="vertical"
     tools:context="com.qiujk.devuser.AlbumActivity">
     <!--<ImageView-->
-        <!--android:id="@+id/iv_picture"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="center_horizontal"/>-->
+    <!--android:id="@+id/iv_picture"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center_horizontal"/>-->
     <Button
         android:id="@+id/btn_take_video"
         android:layout_width="match_parent"
@@ -20,6 +20,7 @@
         android:layout_marginTop="5dp"
         android:background="@drawable/shape_main"
         android:text="take video"/>
+
     <Button
         android:id="@+id/choose_from_video"
         android:layout_width="match_parent"
@@ -27,6 +28,7 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/shape_main"
         android:text="choose from video"/>
+
     <Button
         android:id="@+id/btn_take_photo"
         android:layout_width="match_parent"
@@ -34,6 +36,7 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/shape_main"
         android:text="take photo"/>
+
     <Button
         android:id="@+id/choose_from_album"
         android:layout_width="match_parent"
@@ -42,9 +45,10 @@
         android:background="@drawable/shape_main"
         android:text="choose from album"/>
 
-    <VideoView  android:id="@+id/videoViewPlayer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal">
+    <VideoView
+        android:id="@+id/videoViewPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
     </VideoView>
 </LinearLayout>

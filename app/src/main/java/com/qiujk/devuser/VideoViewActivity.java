@@ -12,7 +12,7 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 public class VideoViewActivity extends AppCompatActivity {
-    private final String tag="VideoViewActivity";
+    private final String tag = "VideoViewActivity";
     private EditText url;
     private Button btnplay;
     private VideoView videoView;
@@ -21,18 +21,19 @@ public class VideoViewActivity extends AppCompatActivity {
     private String url2 = "rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov";
     private String url3 = "http://42.96.249.166/live/388.m3u8";
     private String url4 = "http://61.129.89.191/ThroughTrain/download.html?id=4035&flag=-org-"; //音频url
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_view);
-        url = (EditText)findViewById(R.id.url);
+        url = (EditText) findViewById(R.id.url);
         btnplay = (Button) findViewById(R.id.play);
-        videoView = (VideoView)findViewById(R.id.video);
+        videoView = (VideoView) findViewById(R.id.video);
 
         mMediaController = new MediaController(this);
         videoView.setMediaController(mMediaController);
         url.setText(url1);
-        btnplay.setOnClickListener(new View.OnClickListener(){
+        btnplay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loadView(url.getText().toString());

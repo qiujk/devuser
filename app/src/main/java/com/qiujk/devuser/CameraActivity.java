@@ -28,7 +28,7 @@ import java.io.IOException;
 import java.util.Date;
 
 public class CameraActivity extends Activity {
-    private final String tag ="CameraActivity";
+    private final String tag = "CameraActivity";
     private SurfaceView surfaceView;
     private SurfaceHolder surfaceHolder;
     private Camera camera;
@@ -55,6 +55,7 @@ public class CameraActivity extends Activity {
         initCamera();
         initViews();
     }
+
     //初始化摄像头
     private void initCamera() {
         mRecVedioPath = new File(Environment.getExternalStorageDirectory()
@@ -70,7 +71,7 @@ public class CameraActivity extends Activity {
                 try {
                     if (ContextCompat.checkSelfPermission(CameraActivity.this, Manifest.permission.CAMERA)
                             == PackageManager.PERMISSION_GRANTED) {
-                        Log.i(tag,"Granted");
+                        Log.i(tag, "Granted");
                         //init(barcodeScannerView, getIntent(), null);
                     } else {
                         ActivityCompat.requestPermissions(CameraActivity.this,
@@ -118,6 +119,7 @@ public class CameraActivity extends Activity {
         //This method was deprecated in API level 11. this is ignored, this value is set automatically when needed.
         cameraSurfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
     }
+
     //初始化视图组件
     private void initViews() {
         timeTextView = (TextView) findViewById(R.id.camera_time);
@@ -129,14 +131,14 @@ public class CameraActivity extends Activity {
         vedioButton.setOnClickListener(onClickListener);
     }
 
-    class ButtonOnClickListener implements View.OnClickListener{
+    class ButtonOnClickListener implements View.OnClickListener {
 
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.camera_vedio:
                     //点击开始录像
-                    if(isRecording){
+                    if (isRecording) {
                         if (isPreview) {
                             camera.stopPreview();
                             camera.release();
@@ -146,9 +148,9 @@ public class CameraActivity extends Activity {
                         minute = 0;
                         hour = 0;
                         bool = true;
-                        if(null==mediaRecorder){
+                        if (null == mediaRecorder) {
                             mediaRecorder = new MediaRecorder();
-                        }else {
+                        } else {
                             mediaRecorder.reset();
                         }
                         //表面设置显示记录媒体（视频）的预览
@@ -184,11 +186,11 @@ public class CameraActivity extends Activity {
                         }
                         isRecording = !isRecording;
                         Log.e(tag, "=====开始录制视频=====");
-                    }else {
+                    } else {
                         //点击停止录像
                         //bool = false;
                         mediaRecorder.stop();
-                        timeTextView.setText(FormatUtil.format(hour)+":"+FormatUtil.format(minute)+":"+ FormatUtil.format(second));
+                        timeTextView.setText(FormatUtil.format(hour) + ":" + FormatUtil.format(minute) + ":" + FormatUtil.format(second));
                         mediaRecorder.release();
 
                         mediaRecorder = null;
@@ -247,7 +249,7 @@ public class CameraActivity extends Activity {
                             public void onPictureTaken(byte[] data, Camera camera) {
                                 new SavePictureTask().execute(data);
                                 camera.startPreview();
-                                Log.e(tag,"=====拍照成功=====");
+                                Log.e(tag, "=====拍照成功=====");
                             }
                         }); // 拍照
                     }
@@ -257,6 +259,7 @@ public class CameraActivity extends Activity {
             }
         }
     }
+
     /*
      * 定时器设置，实现计时
      */
@@ -281,7 +284,6 @@ public class CameraActivity extends Activity {
     };
 
 
-
     class SavePictureTask extends AsyncTask<byte[], String, String> {
         @Override
         protected String doInBackground(byte[]... params) {
@@ -291,7 +293,7 @@ public class CameraActivity extends Activity {
             if (!out.exists()) {
                 out.mkdirs();
             }
-            File picture = new File(path+"/"+new Date().getTime()+".jpg");
+            File picture = new File(path + "/" + new Date().getTime() + ".jpg");
             try {
                 FileOutputStream fos = new FileOutputStream(picture.getPath());
                 fos.write(params[0]);

@@ -19,9 +19,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //// TODO: 2018/1/4
         JSONObject jObj = JSON.parseObject("{\"username\":\"qjk\"}");
-        String username =  jObj.getString("username");
+        String username = jObj.getString("username");
         initViews();
     }
+
     private void initViews() {
         btnMediaPlayer = (Button) findViewById(R.id.btnMediaPlayer);
         btnAlbum = (Button) findViewById(R.id.btnAlbum);
@@ -31,16 +32,17 @@ public class MainActivity extends AppCompatActivity {
         btnAlbum.setOnClickListener(onClickListener);
         btnVideoPlayer.setOnClickListener(onClickListener);
     }
+
     class ButtonOnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            switch (v.getId()){
+            switch (v.getId()) {
                 case R.id.btnAlbum:
                     Intent intent = new Intent(getApplicationContext(), AlbumActivity.class);
                     startActivity(intent);
                     //finish();
                     break;
-                case  R.id.btnMediaPlayer:
+                case R.id.btnMediaPlayer:
                     Intent playerIntent = new Intent(getApplicationContext(), VideoActivity.class);
                     startActivity(playerIntent);
                     //finish();
