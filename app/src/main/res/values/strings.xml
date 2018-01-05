@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">设备使用</string>
+    <string name="title_activity_camera">CameraActivity</string>
+    <string name="title_activity_album">AlbumActivity</string>
+</resources>
