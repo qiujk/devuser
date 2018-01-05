@@ -101,8 +101,8 @@ public class VideoActivity extends AppCompatActivity {
         mediaPlayer.setOnPreparedListener(new OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
-                mp.start();
-                Toast.makeText(VideoActivity.this, "开始播放！", Toast.LENGTH_LONG).show();
+                //mp.start();
+                //Toast.makeText(VideoActivity.this, "开始播放！", Toast.LENGTH_LONG).show();
             }
         });
         mediaPlayer.setOnErrorListener(new android.media.MediaPlayer.OnErrorListener() {
@@ -222,7 +222,8 @@ public class VideoActivity extends AppCompatActivity {
             mediaPlayer.setDisplay(surfaceView.getHolder());
             mediaPlayer.prepare();
             // 播放
-            //mediaPlayer.start();
+            mediaPlayer.start();
+            Toast.makeText(this, "开始播放！", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             Log.e(TAG, "play error:" + e.getMessage());
         }

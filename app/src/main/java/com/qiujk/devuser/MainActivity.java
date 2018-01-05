@@ -27,10 +27,12 @@ public class MainActivity extends AppCompatActivity {
         btnMediaPlayer = (Button) findViewById(R.id.btnMediaPlayer);
         btnAlbum = (Button) findViewById(R.id.btnAlbum);
         Button btnVideoPlayer = (Button) findViewById(R.id.btnVideoPlayer);
+        Button btnVitamio = (Button) findViewById(R.id.btnVitamio);
         ButtonOnClickListener onClickListener = new ButtonOnClickListener();
         btnMediaPlayer.setOnClickListener(onClickListener);
         btnAlbum.setOnClickListener(onClickListener);
         btnVideoPlayer.setOnClickListener(onClickListener);
+        btnVitamio.setOnClickListener(onClickListener);
     }
 
     class ButtonOnClickListener implements View.OnClickListener {
@@ -50,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.btnVideoPlayer:
                     Intent videoIntent = new Intent(getApplicationContext(), VideoViewActivity.class);
                     startActivity(videoIntent);
+                    break;
+                case R.id.btnVitamio:
                     break;
             }
         }

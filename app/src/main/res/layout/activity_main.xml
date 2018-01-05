@@ -3,19 +3,16 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/shape_main"
                 tools:context=".MainActivity">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:orientation="vertical">
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:scaleType="centerCrop"
             android:src="@drawable/main"/>
     </LinearLayout>
 
@@ -23,36 +20,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="100dp"
         android:orientation="vertical">
 
         <Button
             android:id="@+id/btnAlbum"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/shape_main"
-            android:text="使用本机"
+            android:text="本地视频和相册"
             android:textColor="#FFFFFF"/>
 
         <Button
             android:id="@+id/btnMediaPlayer"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/shape_main"
-            android:text="使用MEDIA"
+            android:text="MedioPlayer"
             android:textColor="#FFFFFF"/>
 
         <Button
             android:id="@+id/btnVideoPlayer"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/shape_main"
-            android:text="使用VIDEOVIEW"
+            android:text="VideoView"
             android:textColor="#FFFFFF"/>
 
+        <Button
+            android:id="@+id/btnVitamio"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape_main"
+            android:text="Vitamio"
+            android:textColor="#FFFFFF"/>
     </LinearLayout>
-
 </RelativeLayout>

@@ -49,7 +49,7 @@ public class VideoViewActivity extends AppCompatActivity {
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
-                //         mp.setLooping(true);
+                //mp.setLooping(true);
                 mp.start();// 播放
                 Toast.makeText(VideoViewActivity.this, "开始播放！", Toast.LENGTH_LONG).show();
             }
